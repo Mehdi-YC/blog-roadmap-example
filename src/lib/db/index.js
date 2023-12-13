@@ -4,9 +4,9 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 //import * as schema from '$lib/db/schema';
 
 
-export const client = new Pool({
+export const pool = new Pool({
 	connectionString: "postgres://your_database_user:your_database_password@postgres:5432/your_database_name"
 });
 
 
-export const db = drizzle(client);
+export const db = drizzle(pool);

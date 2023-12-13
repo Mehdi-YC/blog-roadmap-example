@@ -2,10 +2,10 @@ import { pg } from "@lucia-auth/adapter-postgresql";
 import { lucia } from 'lucia';
 import { sveltekit } from 'lucia/middleware';
 //import { dev } from '$app/environment';
-import { connection } from '$lib/db';
-
+import { pool } from '../db/index';
 export const auth = lucia({
-	adapter: pg(connection, {
+	
+	adapter: pg(pool, {
 		key: 'user_key',
 		session: 'user_session',
 		user: 'auth_user'

@@ -26,6 +26,7 @@ export const blog = pgTable('blog', {
 	id:             varchar('id', {length: 128}).primaryKey(),
 	userId:         varchar('user_id', {length: 15}).notNull().references(() => user.id),
 	title:      	varchar('title', { length: 255 }),
+	slug:      		varchar('slug', { length: 255 }),
 	imageUrl:    	varchar('image_url', {length: 255}),
 	description:	text('description'),
 	createdAt:      timestamp('created_at'),
