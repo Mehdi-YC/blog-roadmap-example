@@ -9,9 +9,9 @@
     "test": "vitest",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
-    "db:generate": "drizzle-kit generate:mysql",
-    "db:push": "drizzle-kit push:mysql",
-    "db:up": "drizzle-kit up:mysql"
+    "db:generate": "drizzle-kit generate:pg",
+    "db:push": "drizzle-kit push:pg",
+    "db:up": "drizzle-kit up:pg"
   },
   "devDependencies": {
     "@skeletonlabs/skeleton": "2.6.0",
