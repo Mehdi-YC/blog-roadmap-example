@@ -10,8 +10,8 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
     "db:generate": "drizzle-kit generate:mysql",
-		"db:push": "drizzle-kit push:mysql",
-		"db:up": "drizzle-kit up:mysql"
+    "db:push": "drizzle-kit push:mysql",
+    "db:up": "drizzle-kit up:mysql"
   },
   "devDependencies": {
     "@skeletonlabs/skeleton": "2.6.0",
@@ -38,6 +38,7 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "1.5.3",
+    "@lucia-auth/adapter-postgresql": "^2.0.2",
     "lucia": "^2.7.4",
     "pg": "^8.11.3"
   }

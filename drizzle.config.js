@@ -6,6 +6,6 @@ export default {
 	out: './drizzle',
 	driver: 'pg',
 	dbCredentials: {
-		connectionString: "postgres://postgres:@localhost:5432/postgres"
+		connectionString: "postgres://your_database_user:your_database_password@postgres:5432/your_database_name"
 	}
 };

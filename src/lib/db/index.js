@@ -1,10 +1,12 @@
-import { connect } from 'pg';
-import { DATABASE_URL } from '$env/static/private';
-import { drizzle } from 'drizzle-orm/planetscale-serverless';
-import * as schema from '$lib/db/schema';
+import { Client } from 'pg';
+//import { DATABASE_URL } from '$env/static/private';
+import { drizzle } from 'drizzle-orm/node-postgres';
+//import * as schema from '$lib/db/schema';
 
-export const connection = connect({
-	url: DATABASE_URL
+
+export const client = new Client({
+	connectionString: "postgres://your_database_user:your_database_password@postgres:5432/your_database_name"
 });
 
-export const db = drizzle(connection, { schema });
+
+export const db = drizzle(client);
