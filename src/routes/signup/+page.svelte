@@ -1,5 +1,4 @@
 <script>
-	import { enhance } from '$app/forms';
 	import Register from '../../lib/components/Register.svelte';
 	
 </script>

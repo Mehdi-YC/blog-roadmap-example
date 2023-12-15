@@ -22,13 +22,26 @@ import { redirect } from "@sveltejs/kit";
 
 
 export const load = async ({ locals }) => {
+
 	const session = await locals.auth.validate();
+
+	// if the user is not conencted :
 	if (!session) throw redirect(302, "/login");
+
+	let user_blogs = await db.query.user.findMany({
+		where: eq(user.id,session.user.userId),
+		with:{
+			blog:true
+		}
+	});
 	return {
 		userId: session.user.userId,
-		username: session.user.username
+		username: session.user.username,
+		blogs:user_blogs[0].blog
 	};
 };
+
+
 
 export const actions = {
 	logout: async ({ locals }) => {

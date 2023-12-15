@@ -1,7 +1,7 @@
 import { Pool } from 'pg';
 //import { DATABASE_URL } from '$env/static/private';
 import { drizzle } from 'drizzle-orm/node-postgres';
-//import * as schema from '$lib/db/schema';
+import * as schema from '$lib/db/schema';
 
 
 export const pool = new Pool({
@@ -9,4 +9,4 @@ export const pool = new Pool({
 });
 
 
-export const db = drizzle(pool);
+export const db = drizzle(pool, { schema: schema });

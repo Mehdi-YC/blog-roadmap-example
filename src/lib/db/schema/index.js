@@ -1,4 +1,6 @@
 import { pgTable, bigint, varchar,text,timestamp } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
+
 
 export const user = pgTable('auth_user', {
 	id:             varchar('id', {length: 15 }).primaryKey(),// change this when using custom user ids
@@ -7,6 +9,10 @@ export const user = pgTable('auth_user', {
 	lastNames:      varchar('last_names', { length: 255 })
 });
 
+export const userRelations = relations(user, ({ many }) => ({
+	blog: many(blog),
+  }));
+  
 
 export const session = pgTable('user_session', {
 	id:             varchar('id', {length: 128}).primaryKey(),
@@ -22,6 +28,9 @@ export const key = pgTable('user_key', {
 	hashedPassword: varchar('hashed_password', {length: 255})
 });
 
+
+
+
 export const blog = pgTable('blog', {
 	id:             varchar('id', {length: 128}).primaryKey(),
 	userId:         varchar('user_id', {length: 15}).notNull().references(() => user.id),
@@ -32,4 +41,13 @@ export const blog = pgTable('blog', {
 	createdAt:      timestamp('created_at'),
 	editedAt:       timestamp('edited_at')
 });
+
+export const blogRelations = relations(blog, ({ one }) => ({
+	user: one(user, {
+	  fields: [blog.userId],
+	  references: [user.id],
+	})
+  }));
+
 // Note: PlanetScale does not support foreign keys, that's why the references() method is commented out.
+
