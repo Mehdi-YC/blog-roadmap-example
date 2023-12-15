@@ -3,7 +3,7 @@ import { fail, redirect } from "@sveltejs/kit";
 
 
 export const actions = {
-	default: async ({ request, locals }) => {
+	register: async ({ request, locals }) => {
 		const formData = await request.formData();
 		const username = formData.get("username");
 		const password = formData.get("password");

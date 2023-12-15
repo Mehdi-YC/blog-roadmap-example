@@ -4,7 +4,7 @@ import { fail, redirect } from "@sveltejs/kit";
 
 
 export const actions = {
-	default: async ({ request, locals }) => {
+	login: async ({ request, locals }) => {
 		const formData = await request.formData();
 		const username = formData.get("username");
 		const password = formData.get("password");
@@ -12,7 +12,7 @@ export const actions = {
 		try {
 			// find user by key
 			// and validate password
-			console.log(username, password)
+			
 			const key = await auth.useKey(
 				"username",
 				username.toLowerCase(),
